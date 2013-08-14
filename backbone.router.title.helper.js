@@ -11,7 +11,7 @@
         _setPromisedTitle: function(title, routeName) {
             var _this = this;
             if (jQuery) {
-                if (!jQuery.Deferred) throw new Error("Currently, Backbonejs-Router-Title-Helper works with jQuery.Deferred, so jQuery > 1.5 is required");
+                if (!jQuery.Deferred) throw new Error("Backbonejs-Router-Title-Helper: jQuery >= 1.5 is required to use Deferred object");
                 $.when(title).then(function(deferredTitle) {
                     document.title = deferredTitle;
                     _this.trigger("change:title", routeName, deferredTitle);
@@ -20,7 +20,7 @@
                 }, function() {
                     throw("Your deferred job failed. No title to set.")
                 });
-            }
+            } else throw new Error("Backbonejs-Router-Title-Helper: Currently only jQuery.Deferred object is supported");
         },
 
         _setTitle: function(routeName) {
