@@ -18,7 +18,7 @@
                     delete _this.titles[routeName];
                     _this.titles[routeName] = new jQuery.Deferred();
                 }, function() {
-                    throw("Your deferred job failed. No title to set.")
+                    throw new Error("Backbonejs-Router-Title-Helper: Your deferred job failed. No title to set.");
                 });
             } else throw new Error("Backbonejs-Router-Title-Helper: Currently only jQuery.Deferred object is supported");
         },
